@@ -1,0 +1,15 @@
+- title t('.title')
+
+%table
+  %thead
+    %tr
+      %th= ProgrammingLanguage.human_attribute_name :name
+      %th= ProgrammingLanguage.human_attribute_name :language_type
+      %th= ProgrammingLanguage.human_attribute_name :designed_by
+
+  %tbody
+    - @programming_languages.each do |programming_language|
+      %tr{ :class => cycle(:odd, :even) }
+        %td= programming_language.name
+        %td= programming_language.language_type.to_sentence
+        %td= programming_language.designed_by.to_sentence

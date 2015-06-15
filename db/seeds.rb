@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+JSON.load(Rails.root.join 'db', 'seeds', 'data.json').each do |record|
+  programming_language = ProgrammingLanguage.find_or_create_by name: record['Name']
+  programming_language.update(
+    language_type: record['Type'].split(/, */),
+    designed_by: record['Designed by'].split(/, */)
+  )
+end

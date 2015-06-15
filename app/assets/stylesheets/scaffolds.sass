@@ -1,0 +1,174 @@
+@import colors
+
+body
+  background-color: $body_bg
+  font-family: verdana, arial, helvetica, sans-serif
+  font-size: 14px
+  // line-height: 18px
+  margin: 0px
+  &.index
+    .empty
+      font-size: 18px
+      text-align: center
+  h1
+    color: $body_h1
+    font-size: 28px
+    font-stretch: semi-expanded
+    font-weight: bold
+    line-height: 32px
+    margin: 18px
+    text-align: center
+    text-transform: uppercase
+  h2
+    font-size: 24px
+    line-height: 26px
+  h3
+    font-size: 22px
+    line-height: 24px
+  h4
+    font-size: 20px
+    line-height: 22px
+  h5
+    font-size: 18px
+    line-height: 20px
+  h6
+    font-size: 16px
+    line-height: 18px
+
+  #user_nav
+    padding: 1px 8px 0
+    margin: 2px 0
+    float: right
+    font-size: 16px
+
+p, ol, ul, td
+  color: $text
+  font-size: 13px
+  line-height: 18px
+
+pre
+  background-color: $unformatted
+  padding: 10px
+  font-size: 11px
+
+a
+  &.image_link:hover
+    color: $body_bg
+    background-color: $body_bg
+  color: $link
+  &:visited
+    color: $link_visited
+  &:hover
+    color: $link_hover
+    background-color: $link_hover_bg
+  img
+    border: none
+
+div
+  &.field, &.actions
+    margin-bottom: 10px
+
+header
+  background-color: $header_bg
+  box-shadow: 0 0 4px $header_shadow
+  height: 26px
+  padding: 0 10px 0 22px
+  img
+    height: 26px
+
+hr
+  margin-bottom: 0
+
+table
+  th
+    text-align: center
+    font-weight: bold
+  td, th
+    padding: 1px
+    &.numeric
+      text-align: right
+      padding-right: 12px
+    &.center
+      text-align: center
+
+ul.pagination
+  padding-left: 0
+  li
+    display: inline
+    &.active
+      a
+        font-weight: bold
+        text-decoration: none
+
+#container
+  background: $container_bg
+  margin: 0 20px
+
+#flash_notice,
+#flash_error,
+#flash_alert
+  padding: 5px 8px
+  margin: 10px 0
+
+#flash_notice
+  background-color: $flash_notice_bg
+  border: solid 1px $flash_notice_border
+
+#flash_error,
+#flash_alert
+  background-color: $flash_error_bg
+  border: solid 1px $flash_error_border
+
+#locale_select
+  display: inline-block
+  font-size: 16px
+  font-weight: bold
+  .language
+    color: $locale
+    display: inline-block
+    padding: 2px 6px
+    &.current
+      color: $locale_current
+      background: $locale
+      border-radius: 3px
+    &:hover
+      background: $locale
+      border-radius: 3px
+      color: $locale_current
+      a
+        color: $locale_current
+    a
+      color: $locale
+      text-decoration: none
+      &:hover
+        background: $locale
+        border-radius: 3px
+        color: $locale_current
+
+#notice
+  color: $notice
+
+#overlay_mask
+  background-color: $overlay_mask !important
+
+#sortable
+  .draggable
+    cursor: move
+
+#spinner
+  display: none
+  left: 0
+  position: fixed
+  top: 0
+  z-index: 100
+
+.alert-error
+  background-color: $error_notification_bg
+  border: 2px solid $error_notification_border
+  border-radius: 6px
+  color: $error_notification
+  margin-top: 12px
+  padding: 6px
+
+.translation_missing
+  background: $translation_missing

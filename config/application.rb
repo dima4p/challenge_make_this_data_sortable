@@ -16,6 +16,7 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module MakeThisDataSearchable
+  # Application
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -31,5 +32,15 @@ module MakeThisDataSearchable
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.colorize_logging = false if ENV['colorize_logging'] == 'false'
+
+    config.sass.preferred_syntax = :sass
+    config.generators do |g|
+      g.colorize_logging = true
+      g.template_engine :haml
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+    end
+
   end
 end
