@@ -1,0 +1,74 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'config/locales/core_ru.rb'
+    - 'config/initializers/kaminari_config.rb'
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/wice_grid_config.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
+  Include:
+    - '**/*.gemspec'
+    - '**/*.jbuilder'
+    - '**/*.rake'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Capfile'
+  RunRailsCops: true
+
+Lint/LiteralInInterpolation:
+  Enabled: false
+Lint/AmbiguousOperator:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+Metrics/ClassLength:
+  Max: 200
+Metrics/CyclomaticComplexity:
+  Max: 13
+Metrics/LineLength:
+  Max: 128
+Metrics/MethodLength:
+  Max: 21
+Metrics/PerceivedComplexity:
+  Max: 13
+
+Style/AlignParameters:
+  Enabled: false
+Style/AndOr:
+  Enabled: false
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Style/MultilineBlockChain:
+  Enabled: false
+Style/MultilineTernaryOperator:
+  Enabled: false
+Style/Not:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%w': '[]'
+Style/RegexpLiteral:
+  Enabled: false
+Style/SignalException:
+  EnforcedStyle: only_raise
+  Enabled: false
+Style/SpaceBeforeBlockBraces:
+  Enabled: false
+Style/TrailingComma:
+  Enabled: false
+Style/TrivialAccessors:
+  AllowPredicates: true
+
+# TODO
+Style/HashSyntax:
+  Enabled: true
+Style/SpaceInsideBlockBraces:
+  Enabled: false
+Style/SpaceInsideHashLiteralBraces:
+  Enabled: false
