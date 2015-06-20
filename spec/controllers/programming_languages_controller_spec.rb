@@ -23,6 +23,22 @@ describe ProgrammingLanguagesController, type: :controller do
       expect(assigns(:programming_languages)).to be_kind_of(ActiveRecord::Relation)
       expect(assigns(:programming_languages)).to eq([programming_language])
     end
+
+    context 'when query is present' do
+      let(:query) do
+        {q: %q(  one " two " ' two and  a  half ' -three )}
+      end
+
+      it 'assigns the positive words to @with removing extra spaced' do
+        get :index, query, valid_session
+        expect(assigns(:with)).to eq ['one', 'two', 'two and a half']
+      end
+
+      it 'assigns the negative words to @without removing extra spaced' do
+        get :index, query, valid_session
+        expect(assigns(:without)).to eq ['three']
+      end
+    end
   end
 
   describe "GET show" do

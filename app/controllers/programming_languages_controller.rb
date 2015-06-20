@@ -6,6 +6,15 @@ class ProgrammingLanguagesController < ApplicationController
   # GET /programming_languages.json
   def index
     @programming_languages = ProgrammingLanguage.all
+    words = params[:q] && Shellwords.split(params[:q]).map(&:squish)
+    if words.present?
+      @with = words.reject{|word| word.first == '-'}
+      @without = words.select{|word| word.first == '-'}.map do |word|
+        word[1..-1]
+      end
+    else
+      @programming_languages = @programming_languages.ordered
+    end
   end
 
   # GET /programming_languages/1
