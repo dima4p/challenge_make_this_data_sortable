@@ -15,4 +15,12 @@ describe "programming_languages/index", type: :view do
     assert_select 'tr>td', text: @programming_language.designed_by.to_sentence, count: 2
   end
 
+  it 'renders a form for search' do
+    render
+
+    assert_select "form[action='#{programming_languages_path}'][method='get']" do
+      assert_select 'input#q[name=?]', 'q'
+    end
+  end
+
 end

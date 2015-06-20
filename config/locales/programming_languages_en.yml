@@ -22,6 +22,7 @@ en:
       confirm: "Are you sure you want to delete the programming language?"
       empty: "No programming languages found"
       new_programming_language: "Add a new programming language"
+      search: 'Search'
       title: "Listing of programming languages"
     new:
       title: "Adding a new programming language"

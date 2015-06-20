@@ -1,5 +1,9 @@
 - title t('.title')
 
+= form_for ProgrammingLanguage.new, html: {id: 'search', class: 'search'}, method: :get do |f|
+  = text_field_tag :q
+  = f.submit t '.search'
+
 %table
   %thead
     %tr
