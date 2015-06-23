@@ -38,6 +38,14 @@ describe ProgrammingLanguagesController, type: :controller do
         get :index, query, valid_session
         expect(assigns(:without)).to eq ['three']
       end
+
+      it 'sends to ProgrammingLanguage :with and :without calls' do
+        expect(ProgrammingLanguage).to receive(:with)
+          .with(['one', 'two', 'two and a half']) {ProgrammingLanguage}
+        expect(ProgrammingLanguage).to receive(:without)
+          .with(['three']) {ProgrammingLanguage}
+        get :index, query, valid_session
+      end
     end
   end
 

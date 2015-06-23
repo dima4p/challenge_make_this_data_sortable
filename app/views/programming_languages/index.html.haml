@@ -7,6 +7,8 @@
 %table
   %thead
     %tr
+      - if @with.present?
+        %th= ProgrammingLanguage.human_attribute_name :rate
       %th= ProgrammingLanguage.human_attribute_name :name
       %th= ProgrammingLanguage.human_attribute_name :language_type
       %th= ProgrammingLanguage.human_attribute_name :designed_by
@@ -14,6 +16,8 @@
   %tbody
     - @programming_languages.each do |programming_language|
       %tr{ :class => cycle(:odd, :even) }
+        - if @with.present?
+          %td= programming_language.rate
         %td= programming_language.name
         %td= programming_language.language_type.to_sentence
         %td= programming_language.designed_by.to_sentence
