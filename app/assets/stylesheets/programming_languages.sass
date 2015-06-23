@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass here: http://sass-lang.com/
 
+@import colors
+
 body.programming_languages
   form
     margin: 0 auto 20px
@@ -10,4 +12,18 @@ body.programming_languages
     input[type=text]
       width: 360px
   table
+    border-spacing: 0
+    border-collapse: collapse
+    border-width: 2px
     margin: 0 auto
+    thead
+      background-color: $table_head
+    tr
+      padding: 0
+      &.even
+        background-color: $table_even
+      &.odd
+        background-color: $table_odd
+      td, th
+        border: solid 1px $table_border
+        padding: 2px 4px
