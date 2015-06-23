@@ -4,6 +4,15 @@
   = text_field_tag :q
   = f.submit t '.search'
 
+- if @with.present?
+  .display
+    = t '.with'
+    = @with.map{|w| "<em>#{w}</em>"}.to_sentence.html_safe
+- if @without.present?
+  .display
+    = t '.without'
+    = @without.map{|w| "<em>#{w}</em>"}.to_sentence.html_safe
+
 %table
   %thead
     %tr

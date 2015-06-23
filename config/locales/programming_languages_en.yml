@@ -25,6 +25,8 @@ en:
       new_programming_language: "Add a new programming language"
       search: 'Search'
       title: "Listing of programming languages"
+      with: "Containing words:"
+      without: "Not containing words:"
     new:
       title: "Adding a new programming language"
     show:
