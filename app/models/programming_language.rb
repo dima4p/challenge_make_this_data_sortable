@@ -21,7 +21,9 @@ class ProgrammingLanguage < ActiveRecord::Base
   # Selects the records containing given words case insensitive
   scope :with, -> words {
     return ordered if words.blank?
-    words = Array.wrap(words).map(&:downcase)
+    words = Array.wrap(words).map(&:downcase).map do |word|
+      sanitize_sql_like word
+    end
     logger.debug "ProgrammingLanguage@#{__LINE__}.with #{words.inspect}" if logger.debug?
     cond = words.map do |word|
       "(#{[
@@ -47,6 +49,7 @@ class ProgrammingLanguage < ActiveRecord::Base
   scope :without, -> words {
     logger.debug "ProgrammingLanguage@#{__LINE__}.without #{words.inspect}" if logger.debug?
     cond = Array.wrap(words).map(&:downcase).map do |word|
+      word = sanitize_sql_like word
       [
         "lower(name) NOT LIKE '%#{word}%'",
         "(SELECT count(*) FROM unnest(language_type) AS a(t) WHERE lower(t) LIKE '%#{word}%') = 0",
