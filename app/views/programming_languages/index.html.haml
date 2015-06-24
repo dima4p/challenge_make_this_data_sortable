@@ -7,26 +7,30 @@
 - if @with.present?
   .display
     = t '.with'
-    = @with.map{|w| "<em>#{w}</em>"}.to_sentence.html_safe
+    = @with.map{|word| "<em>#{h word}</em>"}.to_sentence.html_safe
 - if @without.present?
   .display
     = t '.without'
-    = @without.map{|w| "<em>#{w}</em>"}.to_sentence.html_safe
+    = @without.map{|word| "<em>#{h word}</em>"}.to_sentence.html_safe
 
-%table
-  %thead
-    %tr
-      - if @with.present?
-        %th= ProgrammingLanguage.human_attribute_name :rate
-      %th= ProgrammingLanguage.human_attribute_name :name
-      %th= ProgrammingLanguage.human_attribute_name :language_type
-      %th= ProgrammingLanguage.human_attribute_name :designed_by
-
-  %tbody
-    - @programming_languages.each do |programming_language|
-      %tr{class: cycle(:odd, :even)}
+- if @programming_languages.present?
+  %table
+    %thead
+      %tr
         - if @with.present?
-          %td{class: 'center'}= programming_language.rate
-        %td= programming_language.name
-        %td= programming_language.language_type.to_sentence
-        %td= programming_language.designed_by.to_sentence
+          %th= ProgrammingLanguage.human_attribute_name :rate
+        %th= ProgrammingLanguage.human_attribute_name :name
+        %th= ProgrammingLanguage.human_attribute_name :language_type
+        %th= ProgrammingLanguage.human_attribute_name :designed_by
+
+    %tbody
+      - @programming_languages.each do |programming_language|
+        %tr{class: cycle(:odd, :even)}
+          - if @with.present?
+            %td{class: 'center'}= programming_language.rate
+          %td= programming_language.name
+          %td= programming_language.language_type.to_sentence
+          %td= programming_language.designed_by.to_sentence
+- else
+  .display
+    = t '.empty'
