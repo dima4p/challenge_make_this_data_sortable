@@ -1,0 +1,49 @@
+
+ProgrammingLanguagesController
+  GET index
+    assigns all programming_languages as @programming_languages
+    when query is present
+      assigns the positive words to @with removing extra spaced
+      assigns the negative words to @without removing extra spaced
+      sends to ProgrammingLanguage :with and :without calls
+
+ProgrammingLanguage
+  should be valid
+  should require name to be set
+  class
+    scopes
+      ordered
+        orders the records by :name
+      with
+        filters out the records that do not contain any of the given words case insensitive
+        orders the languages with the same rate by name
+        returns the ordered collection if words are empty
+      without
+        filters out the records that contain any of the given words case insensitive
+        returns the original collection if words are empty
+
+ProgrammingLanguages
+  GET /programming_languages
+    works! (now write some real specs)
+
+ProgrammingLanguagesController
+  routing
+    routes to #index
+    does not route to #new
+    does not route to #show
+    does not route to #edit
+    does not route to #create
+    does not route to #update via PUT
+    does not route to #update via PATCH
+    does not route to #destroy
+
+programming_languages/index
+  renders a list of programming_languages
+  renders a form for search
+
+programming_languages/index.json.jbuilder
+  renders a list of programming_languages as json with following attributes: id, name, language_type, designed_by
+
+Finished in 0.51976 seconds (files took 3.15 seconds to load)
+24 examples, 0 failures
+
