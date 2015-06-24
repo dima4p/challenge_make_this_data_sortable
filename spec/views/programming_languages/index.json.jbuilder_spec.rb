@@ -11,7 +11,6 @@ describe "programming_languages/index.json.jbuilder", type: :view do
     name
     language_type
     designed_by
-    url
   ]
 
   it "renders a list of programming_languages as json with following attributes: #{attributes.join(', ')}" do
@@ -22,7 +21,6 @@ describe "programming_languages/index.json.jbuilder", type: :view do
     expect(hash.keys.sort).to eq attributes.sort
     expected = @programming_language.attributes.slice *attributes
     expected = MultiJson.load MultiJson.dump expected
-    expected['url'] = programming_language_url(@programming_language, format: 'json')
     expect(hash).to eq expected
     # expect(hash['id']).to eq @programming_language.id.to_s
     # expect(hash['name']).to eq @programming_language.name.to_s
